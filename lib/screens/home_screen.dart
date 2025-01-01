@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:img2txt/services/gemini_service.dart';
 import 'package:img2txt/widgets/image_picker_sheet.dart';
 import 'result_screen.dart';
+import 'package:img2txt/api_key.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,8 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   File? _image;
   bool _isLoading = false;
-  final GeminiService _geminiService =
-      GeminiService(apiKey: '<GEMINI_API_KEY>'); // Replace with actual API key.
+  final GeminiService _geminiService = GeminiService(apiKey: apikey);
 
   Future<void> _pickImage(ImageSource source) async {
     final ImagePicker picker = ImagePicker();
