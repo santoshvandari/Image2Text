@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:img2txt/screens/image_text_screen.dart';
+import 'package:img2txt/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ImageToTextScreen(),
+      home: HomeScreen(),
     );
   }
 }

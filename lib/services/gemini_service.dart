@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'dart:io';
 
@@ -25,15 +24,10 @@ class GeminiService {
       final prompt =
           TextPart('Extract all text from this image and return it.');
 
-      debugPrint(
-          'Generating content=======================================================');
-
       // Generate content
       final response = await model.generateContent([
         Content.multi([prompt, imagePart])
       ]);
-
-      debugPrint(response.text ?? 'No text found in the image');
 
       return response.text ?? 'No text found in the image';
     } catch (e) {
