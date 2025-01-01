@@ -13,8 +13,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   File? _image;
   bool _isLoading = false;
-  final GeminiService _geminiService =
-      GeminiService(apiKey: 'AIzaSyAspL2br8MSbkm-TcOGM3Mz5YBVVQolX2o');
+  final GeminiService _geminiService = GeminiService(
+      apiKey:
+          'AIzaSyAspL2br8MSbkm-TcOGM3Mz5YBVVQolX2o'); // Replace with actual API key.
 
   Future<void> _pickImage(ImageSource source) async {
     final ImagePicker picker = ImagePicker();
@@ -72,13 +73,24 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            SizedBox(height: 20),
             ElevatedButton.icon(
               onPressed: () => showImagePickerSheet(context, _pickImage),
               icon: Icon(Icons.add_a_photo),
               label: Text('Select Image'),
             ),
             SizedBox(height: 16),
-            if (_isLoading) Center(child: CircularProgressIndicator()),
+            if (_isLoading)
+              Center(child: CircularProgressIndicator())
+            else if (_image != null)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.file(
+                  _image!,
+                  height: 300,
+                  fit: BoxFit.cover,
+                ),
+              ),
           ],
         ),
       ),

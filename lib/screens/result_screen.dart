@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -7,8 +6,11 @@ class ResultScreen extends StatelessWidget {
   final String extractedText;
   final File image;
 
-  const ResultScreen(
-      {required this.extractedText, required this.image, super.key});
+  const ResultScreen({
+    required this.extractedText,
+    required this.image,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,38 +24,20 @@ class ResultScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            if (image == null)
-              Container(
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.file(
+                image,
                 height: 300,
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Center(
-                  child: Text(
-                    'No image selected',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ),
-              )
-            else
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.file(
-                  image,
-                  height: 300,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            SizedBox(height: 16),
-            Text(
-              'Extracted Text:',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+                fit: BoxFit.cover,
               ),
             ),
             SizedBox(height: 16),
+            Text(
+              'Extracted Text:',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
             Expanded(
               child: Container(
                 padding: EdgeInsets.all(16),
@@ -63,7 +47,9 @@ class ResultScreen extends StatelessWidget {
                 ),
                 child: SingleChildScrollView(
                   child: Text(
-                    extractedText,
+                    extractedText.isNotEmpty
+                        ? extractedText
+                        : 'No text was extracted from the image.',
                     style: TextStyle(fontSize: 16, color: Colors.black87),
                   ),
                 ),
