@@ -13,9 +13,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   File? _image;
   bool _isLoading = false;
-  final GeminiService _geminiService = GeminiService(
-      apiKey:
-          'AIzaSyAspL2br8MSbkm-TcOGM3Mz5YBVVQolX2o'); // Replace with actual API key.
+  final GeminiService _geminiService =
+      GeminiService(apiKey: '<GEMINI_API_KEY>'); // Replace with actual API key.
 
   Future<void> _pickImage(ImageSource source) async {
     final ImagePicker picker = ImagePicker();
