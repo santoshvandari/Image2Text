@@ -48,10 +48,10 @@ Image2Text is a Flutter-based mobile application that allows users to extract te
 
 ## API Integration
 
-The app uses the Gemini API for text extraction. Replace the placeholder API key in `/lib/api_key.dart` with your actual API key:
+The app uses the Gemini API for text extraction. Create the File in `lib` folder with name `api_key.dart`. The Structure look like `/lib/api_key.dart` and add the following code:
 
 ```dart
-final String apikey = '<API_KEY>';
+final String apikey = '<YOUR_API_KEY>'; // Replace the API Key With Your Actual API key. 
 ```
 
 ## Acknowledgments
