@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:img2txt/api_key.dart';
 import 'dart:io';
 import 'package:img2txt/services/gemini_service.dart';
 import 'package:img2txt/widgets/image_picker_sheet.dart';
 import 'result_screen.dart';
-import 'package:img2txt/api_key.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   File? _image;
   bool _isLoading = false;
-  final GeminiService _geminiService = GeminiService(apiKey: apikey);
+  final GeminiService _geminiService = GeminiService(apiKey: gemini_api_key);
 
   Future<void> _pickImage(ImageSource source) async {
     final ImagePicker picker = ImagePicker();
